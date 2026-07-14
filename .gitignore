@@ -1,0 +1,9 @@
+# Data lake local (356 MB, regenerável pelos notebooks) — versiona só os relatórios de qualidade
+data_lake/*
+!data_lake/quality_reports/
+
+# Artefatos de ambiente
+__pycache__/
+.claude/
+.ipynb_checkpoints/
+*.pyc
