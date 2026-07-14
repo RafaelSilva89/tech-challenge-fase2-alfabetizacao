@@ -1,0 +1,266 @@
+[
+  {
+    "tabela":"silver.uf",
+    "check":"not_null",
+    "coluna":"ano",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"not_null",
+    "coluna":"sigla_uf",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"not_null",
+    "coluna":"rede",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"not_null",
+    "coluna":"serie",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"not_null",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"unique",
+    "coluna":"ano+sigla_uf+rede+serie",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 chaves duplicadas"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"valores_permitidos",
+    "coluna":"sigla_uf",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 inválidos"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"intervalo",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 fora de [0, 100]"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"intervalo",
+    "coluna":"soma_proporcoes",
+    "passou":true,
+    "critico":false,
+    "detalhe":"0 fora de [0.98, 1.02]"
+  },
+  {
+    "tabela":"silver.uf",
+    "check":"row_count_min",
+    "coluna":"*",
+    "passou":true,
+    "critico":true,
+    "detalhe":"145 linhas (mínimo 50)"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"not_null",
+    "coluna":"ano",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"not_null",
+    "coluna":"id_municipio",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"not_null",
+    "coluna":"rede",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"not_null",
+    "coluna":"serie",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"not_null",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"unique",
+    "coluna":"ano+id_municipio+rede+serie",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 chaves duplicadas"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"regex",
+    "coluna":"id_municipio",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 fora do padrão '\\\\d{7}'"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"intervalo",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 fora de [0, 100]"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"intervalo",
+    "coluna":"soma_proporcoes",
+    "passou":true,
+    "critico":false,
+    "detalhe":"0 fora de [0.98, 1.02]"
+  },
+  {
+    "tabela":"silver.municipio",
+    "check":"row_count_min",
+    "coluna":"*",
+    "passou":true,
+    "critico":true,
+    "detalhe":"23995 linhas (mínimo 1000)"
+  },
+  {
+    "tabela":"silver.metas_brasil",
+    "check":"not_null",
+    "coluna":"rede",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.metas_brasil",
+    "check":"not_null",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.metas_brasil",
+    "check":"not_null",
+    "coluna":"meta_alfabetizacao_2030",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.metas_brasil",
+    "check":"unique",
+    "coluna":"ano+rede",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 chaves duplicadas"
+  },
+  {
+    "tabela":"silver.metas_brasil",
+    "check":"intervalo",
+    "coluna":"taxa_alfabetizacao",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 fora de [0, 100]"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"not_null",
+    "coluna":"ano",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"not_null",
+    "coluna":"id_aluno",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"not_null",
+    "coluna":"id_municipio",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"not_null",
+    "coluna":"proficiencia",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 nulos"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"unique",
+    "coluna":"ano+id_aluno",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 chaves duplicadas"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"intervalo",
+    "coluna":"proficiencia",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 fora de [300, 1100]"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"valores_permitidos",
+    "coluna":"alfabetizado",
+    "passou":true,
+    "critico":true,
+    "detalhe":"0 inválidos"
+  },
+  {
+    "tabela":"silver.alunos",
+    "check":"row_count_min",
+    "coluna":"*",
+    "passou":true,
+    "critico":true,
+    "detalhe":"3355179 linhas (mínimo 5000)"
+  }
+]
