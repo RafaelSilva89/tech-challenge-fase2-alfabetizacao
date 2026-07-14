@@ -1,0 +1,12 @@
+{
+  "rule": [
+    {
+      "action": { "type": "Delete" },
+      "condition": { "age": 7, "matchesPrefix": ["landing/_processados/"] }
+    },
+    {
+      "action": { "type": "SetStorageClass", "storageClass": "NEARLINE" },
+      "condition": { "age": 60, "matchesPrefix": ["bronze/"] }
+    }
+  ]
+}
