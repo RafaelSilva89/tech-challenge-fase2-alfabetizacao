@@ -55,16 +55,16 @@ servida como **external tables no BigQuery** e o streaming trafega por **Pub/Sub
 ### Diagrama da pipeline
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph FONTES["📥 Fontes de dados"]
-        direction TB
+        direction LR
         BD["Base dos Dados / BigQuery<br/>uf · município · metas BR/UF/mun.<br/>alunos (3,9M) · dicionário INEP"]
         IBGE["API IBGE<br/>dimensão de municípios"]
         EV["Eventos escolares<br/>medições · atualizações de indicador"]
     end
 
     subgraph INGESTAO["🔀 Ingestão híbrida"]
-        direction TB
+        direction LR
         BATCH["Batch<br/>(basedosdados)"]
         STREAM["Streaming<br/>Pub/Sub — pull em micro-lotes,<br/>ack após escrita"]
     end
@@ -79,7 +79,7 @@ flowchart LR
     end
 
     subgraph SERVING["📊 Serving (GCP)"]
-        direction TB
+        direction LR
         BQ["BigQuery<br/>external tables<br/>(dataset alfabetizacao_gold)"]
         USO["Dashboards · SQL ad hoc · ML"]
         BQ --> USO
