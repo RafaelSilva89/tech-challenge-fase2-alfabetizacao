@@ -309,13 +309,44 @@ pip install pyspark pandas pyarrow requests basedosdados google-cloud-storage go
    dataset BigQuery, tópico e subscription Pub/Sub) de forma idempotente, autenticando por
    ADC ou pelo fluxo OAuth do navegador (o mesmo do `basedosdados`). Alternativa via
    terminal: `setup_gcp.ps1`;
-3. Verificação:
+3. Verificação — pelo terminal, se o [Google Cloud SDK](https://cloud.google.com/sdk) estiver instalado:
 
 ```bash
 gcloud storage ls gs://fiap-alfabetizacao-datalake/gold/
 bq query --nouse_legacy_sql \
   "SELECT ano, COUNT(*) n FROM \`fiap-alfabetizacao.alfabetizacao_gold.gold_alfabetizacao_uf\` GROUP BY ano"
 ```
+
+#### Verificação pelo console GCP (sem SDK)
+
+> ⚠️ Faça login com a conta Google **dona do projeto** — a mesma usada pelo notebook no
+> fluxo OAuth. Outra conta verá o erro *"Você precisa de acesso adicional"*.
+
+| Recurso | O que deve aparecer | Link |
+|---------|--------------------|------|
+| **Bucket do data lake** | Pastas `bronze/`, `silver/`, `gold/`, `landing/` e `quality_reports/` espelhando o lake local | [Storage Browser](https://console.cloud.google.com/storage/browser/fiap-alfabetizacao-datalake?project=fiap-alfabetizacao) |
+| **Tópico Pub/Sub** | `eventos-alfabetizacao` com métricas de publicação dos micro-lotes | [Tópico](https://console.cloud.google.com/cloudpubsub/topic/detail/eventos-alfabetizacao?project=fiap-alfabetizacao) |
+| **Subscription** | `eventos-alfabetizacao-sub` vazia — o consumidor deu *ack* após gravar na Bronze | [Subscription](https://console.cloud.google.com/cloudpubsub/subscription/detail/eventos-alfabetizacao-sub?project=fiap-alfabetizacao) |
+| **BigQuery** | Dataset `alfabetizacao_gold` com as external tables da Gold | [BigQuery Studio](https://console.cloud.google.com/bigquery?project=fiap-alfabetizacao) |
+| **APIs habilitadas** | Storage, BigQuery e Pub/Sub com tráfego recente | [APIs & Services](https://console.cloud.google.com/apis/dashboard?project=fiap-alfabetizacao) |
+| **Faturamento** | Custo ≈ zero — recursos dimensionados no free tier | [Billing](https://console.cloud.google.com/billing/linkedaccount?project=fiap-alfabetizacao) |
+
+Query de teste no editor do BigQuery:
+
+```sql
+SELECT ano, COUNT(*) AS n
+FROM `fiap-alfabetizacao.alfabetizacao_gold.gold_alfabetizacao_uf`
+GROUP BY ano ORDER BY ano;
+```
+
+#### Troubleshooting de autenticação
+
+- **`403 SERVICE_DISABLED` no Pub/Sub citando um projeto desconhecido** (ex.: `262006177488`):
+  credencial de usuário sem *quota project* atribui as chamadas gRPC ao projeto dono do
+  OAuth client do `pydata_google_auth`, e não ao seu. A célula 0.1 já trata:
+  `GCP_CREDENTIALS.with_quota_project(BILLING_PROJECT_ID)`.
+- **"Você precisa de acesso adicional" no console**: a conta logada no navegador não é a
+  dona do projeto — troque no seletor de contas (avatar, canto superior direito).
 
 ### Versões locais (custo zero)
 
